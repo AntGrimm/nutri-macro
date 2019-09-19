@@ -10,3 +10,40 @@ body {
   margin: 0;
   min-height: 100%;
 }
+
+.calc-macros {
+  max-width: 25rem;
+  text-align: center;
+}
+
+.header-section {
+  background-color: #126312;
+}
+
+.header {
+  color: #c7bcbc;
+  height: 6rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.main-area {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ingredients-macros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredients {
+  max-width: 25rem;
+}
+
+section > a > button {
+  margin: 1rem;
+}
