@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
-const Recipe = () => {
+const Recipe = props => {
+  const [recipe, setRecipe] = useState()
+  const [instructions, setInstructions] = useState([])
+  const recipeSearch = props.match.params.recipe
+
+  const fetchRecipe = async () => {
+    const resp = await axios.get(
+      `https://api.spoonacular.com/recipes/${recipeSearch}/information?apiKey=55d5937ac1794abf9708407d5a08fe7b&includeNutrition=false`
+    )
+    console.log(resp.data)
+    console.log(resp.data.analyzedInstructions[0].steps)
+    setRecipe(resp.data)
+    setInstructions(resp.data.analyzedInstructions[0].steps)
+  }
+
+  useEffect(() => {
+    fetchRecipe()
+  }, [])
+
   return (
     <>
       <main className="main-area">
+        {/* <p>Cook time: {recipe.readyInMinutes}</p> */}
         <section>
-          <h3>Grill and Vegetables</h3>
-          <h4>20 Minutes</h4>
-        </section>
-        <section>
-          <ul>
-            <li>1- Heat frypan and add half of the butter.</li>
-            <li>2- Grill meat till browned and to your liking.</li>
-            <li>3- Steam beans and add to pan.</li>
-            <li>4- Add the rest of butter to top of the meat.</li>
+          <ul className="recipe">
+            {instructions.map((item, j) => {
+              return (
+                <li className="recipe-ingredients" key={j}>
+                  <p>
+                    {item.number} - {item.step}
+                  </p>
+                </li>
+              )
+            })}
           </ul>
         </section>
       </main>

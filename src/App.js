@@ -6,7 +6,6 @@ import Recipe from './pages/Recipe'
 import BasalMetabolicRate from './pages/BasalMetabolicRate'
 import BmrResults from './pages/BmrResults'
 import RecipeList from './pages/RecipeList'
-import LandingPage from './pages/LandingPage'
 
 class App extends Component {
   render() {
@@ -15,20 +14,15 @@ class App extends Component {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/" component={LandingPage}></Route>
-            <Route
-              exact
-              path="/BasalMetabolicRate"
-              component={BasalMetabolicRate}
-            ></Route>
+            <Route exact path="/" component={BasalMetabolicRate}></Route>
             <Route exact path="/EnterMacros" component={EnterMacros}></Route>
             <Route
               exact
-              path="/BasalMetabolicRate/:BmrResults"
+              path="/BasalMetabolicRate/profile"
               component={BmrResults}
             ></Route>
             <Route exact path="/RecipeList" component={RecipeList}></Route>
-            <Route exact path="/ingredients/recipe" component={Recipe}></Route>
+            <Route exact path="/RecipeList/:recipe" component={Recipe}></Route>
           </Switch>
         </Router>
       </>

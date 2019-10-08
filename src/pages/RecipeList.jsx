@@ -16,7 +16,7 @@ const RecipeList = props => {
 
   const fetchRecipe = async () => {
     const resp = await axios.get(
-      `https://api.spoonacular.com/recipes/findByNutrients?apiKey=55d5937ac1794abf9708407d5a08fe7b&minCalories=${minCalories}&maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=10`
+      `https://api.spoonacular.com/recipes/findByNutrients?apiKey=55d5937ac1794abf9708407d5a08fe7b&minCalories=${minCalories}&maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=30`
     )
     console.log(resp.data)
     setRecipeData(resp.data)
@@ -35,11 +35,17 @@ const RecipeList = props => {
             {recipeData.map((recipe, i) => {
               return (
                 <li className="recipe-specific" key={i}>
-                  <p>{recipe.title}</p>
-                  <img src={recipe.image} alt={recipe.title}></img>
-                  <p>
-                    Calories: {recipe.calories} - Protein: {recipe.protein} -
-                    Carbs: {recipe.carbs} - Fat: {recipe.fat}
+                  <Link to={`RecipeList/${recipe.id}`}>
+                    <p className="recipe-title">{recipe.title}</p>
+                    <img
+                      className="recipe-specific-image"
+                      src={recipe.image}
+                      alt={recipe.title}
+                    ></img>
+                  </Link>
+                  <p className="recipe-macros">
+                    Calories: {recipe.calories} - Protein: {recipe.protein}
+                    <br></br> Carbs: {recipe.carbs} - Fat: {recipe.fat}
                   </p>
                 </li>
               )

@@ -17,21 +17,25 @@ body {
 }
 
 .header-section {
-  background-color: #126312;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f65ac;
 }
 
 .header {
-  color: #c7bcbc;
-  height: 6rem;
+  color: #ecebeb;
   align-items: center;
   justify-content: center;
   display: flex;
+  margin: 1rem 0rem 1rem 0.5rem;
 }
 
 .main-area {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  margin: 1rem;
 }
 
 .ingredients-macros {
@@ -56,6 +60,7 @@ section > a > button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .recipe-specific {
@@ -64,4 +69,37 @@ section > a > button {
   align-items: center;
   text-align: center;
   margin: 0.75rem;
+}
+
+.recipe-specific-image {
+  max-height: 10rem;
+}
+
+.recipe-specific > p {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe-specific > a {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 20rem;
+  justify-content: center;
+}
+
+.recipe-title {
+  min-width: 10rem;
+}
+
+.navbar-items {
+  display: flex;
+}
+
+.navbar-items > p {
+  margin: 0.5rem;
+  color: #ecebeb;
+}
+
+.navbar-items :hover {
+  background-color: #0f3669;
 }

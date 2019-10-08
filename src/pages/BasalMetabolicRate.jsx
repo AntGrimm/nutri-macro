@@ -8,17 +8,6 @@ const BasalMetabolicRate = () => {
   const [height, setHeight] = useState()
   const [activity, setActivity] = useState()
 
-  const bmr = parseFloat(
-    Math.round(
-      10 * (weight / 2.205) +
-        6.25 * (height * 2.54) -
-        5 * age +
-        parseInt(gender)
-    )
-  )
-
-  const bmrAndActivity = parseFloat(Math.round(bmr * activity))
-
   // let feet = 0
   // let inches = 0
   // for(i = 55; i >= 84; i++)
@@ -36,13 +25,22 @@ const BasalMetabolicRate = () => {
   //     console.log(state.deck)
   //   }
 
-  const protein = parseFloat(Math.round((bmrAndActivity * 0.3) / 4))
-  const fats = parseFloat(Math.round((bmrAndActivity * 0.35) / 9))
-  const carbs = parseFloat(Math.round((bmrAndActivity * 0.35) / 4))
-
   return (
     <>
       <main className="main-area">
+        <header>
+          <h1>Learn How Many Calories You Burn Every Day</h1>
+          <p>
+            Use the TDEE calculator to learn your Total Daily Energy
+            Expenditure, a measure of how many calories you burn per day. This
+            calculator will also display your BMR, Macros & many other useful
+            statistics!
+          </p>
+          <p>
+            Based on these statistics, we will find you a list of recipes
+            specifically catered to your profile!
+          </p>
+        </header>
         <section>
           <div>
             <input
@@ -67,7 +65,7 @@ const BasalMetabolicRate = () => {
           <div></div>
           <pre id="log"></pre>
           <div>
-            <h4>Age</h4>
+            <p>Age</p>
             <input
               type="text"
               placeholder="Age"
@@ -77,7 +75,7 @@ const BasalMetabolicRate = () => {
             />
           </div>
           <div>
-            <h4>Weight</h4>
+            <p>Weight</p>
             <input
               type="text"
               placeholder="lbs"
@@ -87,7 +85,7 @@ const BasalMetabolicRate = () => {
             />
           </div>
           <div>
-            <h4>Height</h4>
+            <p>Height</p>
             <select
               onChange={e => {
                 setHeight(e.target.value)
@@ -127,7 +125,7 @@ const BasalMetabolicRate = () => {
             </select>
           </div>
           <div>
-            <h4>Activity Level</h4>
+            <p>Activity Level</p>
             <select
               onChange={e => {
                 setActivity(e.target.value)
@@ -141,22 +139,21 @@ const BasalMetabolicRate = () => {
               <option value="1.9">Athlete (2x per day)</option>
             </select>
           </div>
-          {/* <Link to="/BasalMetabolicRate/profile"> */}
-          <button
-            className="form-button"
-            onClick={e => {
-              console.log('BMR is ' + bmr + ' kcals')
-              console.log('BMR and Activity is ' + bmrAndActivity + ' kcals')
-              console.log('protein is ' + protein + 'g')
-              console.log('carbs is ' + carbs + 'g')
-              console.log('fats is ' + fats + 'g')
-              e.preventDefault()
+          <Link
+            to={{
+              pathname: '/BasalMetabolicRate/profile',
+              state: { gender, age, weight, height, activity }
             }}
           >
-            Submit
-          </button>
-          {/* </Link> */}
+            <button className="form-button">Submit</button>
+          </Link>
         </section>
+        <footer>
+          <p>
+            If you know your macro needs, click{' '}
+            <Link to="/EnterMacros">here</Link>
+          </p>
+        </footer>
       </main>
     </>
   )
