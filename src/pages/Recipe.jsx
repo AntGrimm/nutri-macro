@@ -1,5 +1,4 @@
 import React from 'react'
-import recipePhoto from '../images/grill-vegetable-pic.jpg'
 
 const Recipe = () => {
   return (
