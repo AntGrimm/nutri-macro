@@ -10,13 +10,13 @@ const EnterMacros = () => {
   return (
     <>
       <main className="main-area">
+        <Link to="/">
+          <p>Go Back</p>
+        </Link>
         <p className="calc-macros">
           Calculate your macros, and enter them here. A portioned meal and
           recipe will be provided for you.
         </p>
-        <Link to="/BasalMetabolicRate">
-          <button>Calculate Macros Here</button>
-        </Link>
         <section>
           <div>
             <h4>Calories</h4>

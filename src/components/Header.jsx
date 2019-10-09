@@ -6,7 +6,7 @@ const Header = () => {
     <header className="header-section">
       <div>
         <Link to="/">
-          <h3 className="header">TDEE Calculator and Recipe Finder</h3>
+          <h3 className="header">TDEE Recipe Finder</h3>
         </Link>
       </div>
       <div className="navbar-items">
