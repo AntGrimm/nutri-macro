@@ -103,3 +103,7 @@ section > a > button {
 .navbar-items :hover {
   background-color: #0f3669;
 }
+
+.mod-low-high-carb-section {
+  display: flex;
+}

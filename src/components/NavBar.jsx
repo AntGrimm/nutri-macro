@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-const Header = () => {
+const NavBar = () => {
   return (
     <header className="header-section">
       <div>
@@ -18,4 +19,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default NavBar

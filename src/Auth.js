@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js'
-import history from './history'
+import history from './History'
 const DOMAIN = 'dev-tsv-9-9k.auth0.com'
 const CLIENTID = 'Ea0PJ13AhT0fgF4jEL7ppAz5fPfMBTp7'
 class Auth {

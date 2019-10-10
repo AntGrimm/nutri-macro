@@ -1,19 +1,30 @@
 import React, { Component } from 'react'
 import EnterMacros from './pages/EnterMacros'
-import Header from './components/Header'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Router, Switch, Route } from 'react-router-dom'
 import Recipe from './pages/Recipe'
 import BmrResults from './pages/BmrResults'
 import RecipeList from './pages/RecipeList'
 import LandingPage from './pages/LandingPage'
+import NavBar from './components/NavBar'
 import auth from './Auth'
+import History from './History'
 import axios from 'axios'
+import Header from './components/NavBar'
 
 class App extends Component {
+  // componentWillMount() {
+  //   if (auth.isAuthenticated()) {
+  //     axios.defaults.headers.common = {
+  //       Authorization: auth.authorizationHeader()
+  //     }
+  //   }
+  // }
+
   render() {
     return (
       <>
-        <Router history={history}>
+        <Router>
+          {/* <Router history={History}>
           <Route path="/login" render={() => auth.login()} />
           <Route
             path="/logout"
@@ -33,8 +44,8 @@ class App extends Component {
               })
               return <p />
             }}
-          />
-          <Header />
+          /> */}
+          <NavBar />
           <Switch>
             <Route exact path="/" component={LandingPage}></Route>
             <Route exact path="/EnterMacros" component={EnterMacros}></Route>
