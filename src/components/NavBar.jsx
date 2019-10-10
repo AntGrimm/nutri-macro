@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useAuth0 } from '../react-auth0-wrapper'
 
 const NavBar = () => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
   return (
     <header className="header-section">
       <div>
@@ -14,6 +15,17 @@ const NavBar = () => {
         <p>About</p>
         <p>FAQ</p>
         <p>Contact</p>
+        {!isAuthenticated && (
+          <button onClick={() => loginWithRedirect({})}>Log in</button>
+        )}
+
+        {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+        {isAuthenticated && (
+          <span>
+            <Link to="/">Home</Link>&nbsp;
+            <Link to="/profile">Profile</Link>
+          </span>
+        )}
       </div>
     </header>
   )

@@ -44,6 +44,7 @@ const LandingPage = () => {
         <section>
           <div>
             <input
+              className="radio-button"
               type="radio"
               value="5"
               name="gender"
@@ -53,6 +54,7 @@ const LandingPage = () => {
             />
             Male
             <input
+              className="radio-button"
               type="radio"
               value="-151"
               name="gender"
