@@ -52,29 +52,29 @@ const BmrResults = props => {
   return (
     <>
       <section className="mod-low-high-carb-section">
-        <div>
+        <div className="macro-box">
           <h4>Basal Metabolic Rate</h4>
           <p>Your BMR is {bmr}</p>
           <p>Your BMR with activity is {calories}</p>
         </div>
-        <div>
+        <div className="macro-box">
           <h4>Moderate Carb (30/35/35)</h4>
           <p>Protein {protein}g</p>
           <p>Fats {fat}g</p>
           <p>Carbs {carbs}g</p>
         </div>
-        <div>
+        {/* <div className="macro-box">
           <h4>Higher Carb (30/20/50)</h4>
           <p>Protein {protein}g</p>
           <p>Fats {fat}g</p>
           <p>Carbs {carbs}g</p>
         </div>
-        <div>
+        <div className="macro-box">
           <h4>Lower Carb (40/40/20)</h4>
           <p>Protein {protein}g</p>
           <p>Fats {fat}g</p>
           <p>Carbs {carbs}g</p>
-        </div>
+        </div> */}
       </section>
       <Link
         to={{

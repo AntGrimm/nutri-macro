@@ -56,6 +56,16 @@ section > a > button {
   margin: 1rem 0rem 0rem 0rem;
 }
 
+.recipe-macros {
+  width: 7rem;
+}
+
+.recipe-macros > li {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+}
+
 .recipe-list {
   display: flex;
   flex-wrap: wrap;
@@ -68,16 +78,12 @@ section > a > button {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 0.75rem;
+  margin: 2rem 1rem 0 0;
+  max-width: 18rem;
 }
 
 .recipe-specific-image {
-  max-height: 10rem;
-}
-
-.recipe-specific > p {
-  display: flex;
-  flex-wrap: wrap;
+  max-height: 8rem;
 }
 
 .recipe-specific > a {
@@ -85,10 +91,12 @@ section > a > button {
   flex-wrap: wrap;
   max-width: 20rem;
   justify-content: center;
+  margin-bottom: -2rem;
 }
 
 .recipe-title {
   min-width: 10rem;
+  max-width: 18rem;
 }
 
 .navbar-items {
@@ -101,7 +109,8 @@ section > a > button {
 }
 
 .navbar-items :hover {
-  background-color: #0f3669;
+  color: #0f3669;
+  cursor: pointer;
 }
 
 .mod-low-high-carb-section {
@@ -110,4 +119,15 @@ section > a > button {
 
 .radio-button {
   margin: 0 0.5rem 0 0.5rem;
+}
+
+.macro-box {
+  border: solid 0.25rem black;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.add-to-favorites {
+  color: rgb(100, 100, 247);
+  cursor: pointer;
 }

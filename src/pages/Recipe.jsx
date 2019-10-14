@@ -11,13 +11,22 @@ const Recipe = props => {
       `https://api.spoonacular.com/recipes/${recipeSearch}/information?apiKey=55d5937ac1794abf9708407d5a08fe7b&includeNutrition=false`
     )
     console.log(resp.data)
-    console.log(resp.data.analyzedInstructions[0].steps)
-    setRecipe(resp.data)
-    setInstructions(resp.data.analyzedInstructions[0].steps)
+    // console.log(resp.data.analyzedInstructions[0].steps)
+    // setRecipe(resp.data)
+    // setInstructions(resp.data.analyzedInstructions[0].steps)
+  }
+
+  const fetchRecipeInstructions = async () => {
+    const resp = await axios.get(
+      `https://api.spoonacular.com/recipes/${recipeSearch}/analyzedInstructions?apiKey=55d5937ac1794abf9708407d5a08fe7b`
+    )
+    console.log(resp.data)
+    // setInstructions(resp.data.analyzedInstructions[0].steps)
   }
 
   useEffect(() => {
     fetchRecipe()
+    fetchRecipeInstructions()
   }, [])
 
   return (

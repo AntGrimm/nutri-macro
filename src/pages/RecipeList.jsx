@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useAuth0 } from '../react-auth0-wrapper'
 
 const RecipeList = props => {
   const [recipeData, setRecipeData] = useState([])
+  const [randomRecipes, setRandomRecipes] = useState(0)
+  const { getIdTokenClaims } = useAuth0()
 
   const maxCarbs = props.location.state.carbs / 3
   const minCarbs = props.location.state.carbs / 3 - 10
@@ -20,6 +23,28 @@ const RecipeList = props => {
     )
     console.log(resp.data)
     setRecipeData(resp.data)
+    setRandomRecipes(Math.floor(Math.random() * resp.data.length))
+  }
+
+  const AddFavoriteRecipe = async id => {
+    const tokenStuff = await getIdTokenClaims()
+    const token = tokenStuff.__raw
+    console.log(token)
+    const resp = await axios.post(
+      `https://localhost:5001/api/recipe`,
+      {
+        recipeId: id
+      },
+      {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      }
+    )
+    if (resp.status === 200) {
+      console.log('Sent')
+    }
+    console.log(resp)
   }
 
   useEffect(() => {
@@ -31,22 +56,47 @@ const RecipeList = props => {
     <>
       <main className="main-area">
         <section>
+          <h2 className="random-recipe">
+            {/* Meal of the Day: {recipeData[randomRecipes].title} */}
+          </h2>
           <ul className="recipe-list">
             {recipeData.map((recipe, i) => {
               return (
                 <li className="recipe-specific" key={i}>
                   <Link to={`RecipeList/${recipe.id}`}>
-                    <p className="recipe-title">{recipe.title}</p>
                     <img
                       className="recipe-specific-image"
                       src={recipe.image}
                       alt={recipe.title}
                     ></img>
+                    <h4 className="recipe-title">{recipe.title}</h4>
                   </Link>
-                  <p className="recipe-macros">
-                    Calories: {recipe.calories} - Protein: {recipe.protein}
-                    <br></br> Carbs: {recipe.carbs} - Fat: {recipe.fat}
+                  <p
+                    className="add-to-favorites"
+                    onClick={() => {
+                      AddFavoriteRecipe(recipe.id)
+                    }}
+                  >
+                    Add to favorites
                   </p>
+                  <ul className="recipe-macros">
+                    <li>
+                      <p className="macro-label">Calories: </p>
+                      <p className="macro-value">{recipe.calories}</p>
+                    </li>
+                    <li>
+                      <p className="macro-label">Protein: </p>
+                      <p className="macro-value">{recipe.protein}</p>
+                    </li>
+                    <li>
+                      <p className="macro-label">Carbs: </p>
+                      <p className="macro-value">{recipe.carbs}</p>
+                    </li>
+                    <li>
+                      <p className="macro-label">Fat: </p>
+                      <p className="macro-value">{recipe.fat}</p>
+                    </li>
+                  </ul>
                 </li>
               )
             })}

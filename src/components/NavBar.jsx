@@ -15,15 +15,21 @@ const NavBar = () => {
         <p>About</p>
         <p>FAQ</p>
         <p>Contact</p>
+
+        {/* Auth0 components to include home and profile links */}
         {!isAuthenticated && (
-          <button onClick={() => loginWithRedirect({})}>Log in</button>
+          <p onClick={() => loginWithRedirect({})}>Log in</p>
         )}
 
-        {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+        {isAuthenticated && <p onClick={() => logout()}>Log out</p>}
         {isAuthenticated && (
           <span>
-            <Link to="/">Home</Link>&nbsp;
-            <Link to="/profile">Profile</Link>
+            <Link to="/">
+              <p>Home</p>
+            </Link>
+            <Link to="/profile">
+              <p>Profile</p>
+            </Link>
           </span>
         )}
       </div>
