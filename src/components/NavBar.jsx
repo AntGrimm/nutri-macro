@@ -12,7 +12,7 @@ const NavBar = () => {
         </div>
       </Link>
       <div className="navbar-items">
-        <Link to="/about">
+        {/* <Link to="/about">
           <p>About</p>
         </Link>
         <Link to="/faq">
@@ -20,7 +20,7 @@ const NavBar = () => {
         </Link>
         <Link to="/contact">
           <p>Contact</p>
-        </Link>
+        </Link> */}
 
         {/* Auth0 components to include home and profile links */}
         {!isAuthenticated && <p onClick={() => loginWithRedirect({})}>Login</p>}

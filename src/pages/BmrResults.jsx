@@ -60,15 +60,15 @@ const BmrResults = props => {
           accurate.
         </p>
         <div className="macro-box">
-          <h4>Basal Metabolic Rate</h4>
-          <p>Your BMR is {bmr}</p>
-          <p>Your BMR with activity is {calories}</p>
+          <h4>Your Basal Metabolic Rate</h4>
+          <p>BMR: {bmr}</p>
+          <p>BMR with activity: {calories}</p>
         </div>
         <div className="macro-box">
-          <h4>Moderate Carb (20/30/50)</h4>
-          <p>Protein {protein}g</p>
-          <p>Fats {fat}g</p>
-          <p>Carbs {carbs}g</p>
+          <h4>Your nutrient requirements (20/30/50)</h4>
+          <p>Protein: {protein}g</p>
+          <p>Fats: {fat}g</p>
+          <p>Carbs: {carbs}g</p>
         </div>
         <Link
           to={{
