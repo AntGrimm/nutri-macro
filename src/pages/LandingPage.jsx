@@ -10,7 +10,7 @@ const LandingPage = () => {
 
   // let feet = 0
   // let inches = 0
-  // for(i = 55; i >= 84; i++)
+  // for(i = 55; i <= 84; i++)
   //   i/12(Math.floor) = feet
   //   Math.floor(i%12) = inches
 
@@ -31,14 +31,14 @@ const LandingPage = () => {
         <header>
           <h1>Learn How Many Calories You Burn Every Day</h1>
           <p>
-            Use the TDEE calculator to learn your Total Daily Energy
-            Expenditure, a measure of how many calories you burn per day. This
-            calculator will also display your BMR, Macros & many other useful
-            statistics!
+            Use the TEE calculator to learn your daily Total Energy Expenditure,
+            a measure of how many calories you burn per day. This calculator
+            will also display your Basal Metabolic Rate (BMR), Macro-nutrient
+            requirements & many other useful statistics!
           </p>
           <p>
             Based on these statistics, we will find you a list of recipes
-            specifically catered to your profile!
+            specifically catered to your body composition!
           </p>
         </header>
         <section>
@@ -69,7 +69,7 @@ const LandingPage = () => {
           <div>
             <p>Age</p>
             <input
-              type="text"
+              type="number"
               placeholder="Age"
               onChange={e => {
                 setAge(e.target.value)
@@ -79,7 +79,7 @@ const LandingPage = () => {
           <div>
             <p>Weight</p>
             <input
-              type="text"
+              type="number"
               placeholder="lbs"
               onChange={e => {
                 setWeight(e.target.value)

@@ -12,16 +12,20 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="navbar-items">
-        <p>About</p>
-        <p>FAQ</p>
-        <p>Contact</p>
+        <Link to="/about">
+          <p>About</p>
+        </Link>
+        <Link to="/faq">
+          <p>FAQ</p>
+        </Link>
+        <Link to="/contact">
+          <p>Contact</p>
+        </Link>
 
         {/* Auth0 components to include home and profile links */}
-        {!isAuthenticated && (
-          <p onClick={() => loginWithRedirect({})}>Log in</p>
-        )}
+        {!isAuthenticated && <p onClick={() => loginWithRedirect({})}>Login</p>}
 
-        {isAuthenticated && <p onClick={() => logout()}>Log out</p>}
+        {isAuthenticated && <p onClick={() => logout()}>Logout</p>}
         {isAuthenticated && (
           <span>
             <Link to="/">

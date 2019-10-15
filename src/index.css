@@ -101,6 +101,14 @@ section > a > button {
 
 .navbar-items {
   display: flex;
+  margin: 0 1rem 0rem 0rem;
+  align-items: center;
+}
+
+.navbar-items > a {
+  margin: 0.5rem;
+  color: #ecebeb;
+  text-decoration: none;
 }
 
 .navbar-items > p {

@@ -23,8 +23,6 @@ const Profile = () => {
 
   // Store in database (better)
 
-  // API that takes all IDs (best)
-
   useEffect(() => {
     fetchFavoriteRecipes()
   }, [])
@@ -39,6 +37,17 @@ const Profile = () => {
 
       <h2>{user.name}</h2>
       <p>{user.email}</p>
+      <ul className="favorite-list">
+        {recipeData.map((recipe, i) => {
+          return (
+            <li className="recipe-specific" key={i}>
+              <Link to={`RecipeList/${recipe.id}`}>
+                <h4 className="recipe-title">{recipe.id}</h4>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
       {/* <code>{JSON.stringify(user, null, 2)}</code> */}
     </Fragment>
   )

@@ -5,7 +5,6 @@ import { useAuth0 } from '../react-auth0-wrapper'
 
 const RecipeList = props => {
   const [recipeData, setRecipeData] = useState([])
-  // const [randomRecipe, setRandomRecipe] = useState(0)
   const { getIdTokenClaims } = useAuth0()
 
   const maxCarbs = props.location.state.carbs / 3
@@ -19,12 +18,17 @@ const RecipeList = props => {
 
   const fetchRecipe = async () => {
     const resp = await axios.get(
-      `https://api.spoonacular.com/recipes/findByNutrients?apiKey=55d5937ac1794abf9708407d5a08fe7b&minCalories=${minCalories}&maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=30`
+      `https://api.spoonacular.com/recipes/findByNutrients?apiKey=55d5937ac1794abf9708407d5a08fe7b&minCalories=${minCalories}&maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=100`
     )
+    for (let i = resp.data.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * i)
+      const firstArray = resp.data[i]
+      const secondArray = resp.data[j]
+      resp.data[i] = secondArray
+      resp.data[j] = firstArray
+    }
     console.log(resp.data)
     setRecipeData(resp.data)
-    // setRandomRecipe(Math.floor(Math.random() * resp.data.length))
-    // javascript randomize array
   }
 
   const AddFavoriteRecipe = async id => {
@@ -34,7 +38,8 @@ const RecipeList = props => {
     const resp = await axios.post(
       `https://localhost:5001/api/recipe`,
       {
-        recipeId: id
+        recipeId: id,
+        recipeTitle: id.title
       },
       {
         headers: {
@@ -57,27 +62,6 @@ const RecipeList = props => {
     <>
       <main className="main-area">
         <section>
-          {/* {recipeData.length > 1 && (
-            <ul className="random-recipe">
-              <Link to={`RecipeList/${recipeData[randomRecipe].id}`}>
-                <li>Meal 1: {recipeData[randomRecipe].title}</li>
-                <li>
-                  <img
-                    src={recipeData[randomRecipe].image}
-                    alt={recipeData[randomRecipe].title}
-                  ></img>
-                </li>
-              </Link>
-              <p
-                className="add-to-favorites"
-                onClick={() => {
-                  AddFavoriteRecipe(recipeData[randomRecipe].id)
-                }}
-              >
-                Add to favorites
-              </p>
-            </ul>
-          )} */}
           <ul className="recipe-list">
             {recipeData.map((recipe, i) => {
               return (
