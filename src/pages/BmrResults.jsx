@@ -52,6 +52,21 @@ const BmrResults = props => {
   return (
     <>
       <section className="mod-low-high-carb-section">
+        <h3>How TEE Is Calculated</h3>
+        <p>
+          Your daily Total Energy Expenditure (TEE) is an estimation of how many
+          calories you burn per day when exercise is taken into account. It is
+          calculated by first figuring out your Basal Metabolic Rate, then
+          multiplying that value by an activity multiplier.
+        </p>
+        <img src="" alt="TEE Pie Chart"></img>
+        <p>
+          Since your BMR represents how many calories your body burns when at
+          rest, it is necessary to adjust the numbers upwards to account for the
+          calories you burn during the day. This is true even for those with a
+          sedentary lifestyle. Our TEE calculator uses the best formulas and
+          displays your score in a way that's easy to read and meaningful.
+        </p>
         <div className="macro-box">
           <h4>Basal Metabolic Rate</h4>
           <p>Your BMR is {bmr}</p>
@@ -63,27 +78,15 @@ const BmrResults = props => {
           <p>Fats {fat}g</p>
           <p>Carbs {carbs}g</p>
         </div>
-        {/* <div className="macro-box">
-          <h4>Higher Carb (30/20/50)</h4>
-          <p>Protein {protein}g</p>
-          <p>Fats {fat}g</p>
-          <p>Carbs {carbs}g</p>
-        </div>
-        <div className="macro-box">
-          <h4>Lower Carb (40/40/20)</h4>
-          <p>Protein {protein}g</p>
-          <p>Fats {fat}g</p>
-          <p>Carbs {carbs}g</p>
-        </div> */}
+        <Link
+          to={{
+            pathname: '/RecipeList',
+            state: { carbs, protein, fat, calories }
+          }}
+        >
+          <button>Get Meals</button>
+        </Link>
       </section>
-      <Link
-        to={{
-          pathname: '/RecipeList',
-          state: { carbs, protein, fat, calories }
-        }}
-      >
-        <button>Get Meals</button>
-      </Link>
     </>
   )
 }

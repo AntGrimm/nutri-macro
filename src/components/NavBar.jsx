@@ -6,11 +6,11 @@ const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
   return (
     <header className="header-section">
-      <div>
-        <Link to="/">
+      <Link to="/">
+        <div>
           <h3 className="header">Total Energy Expenditure Recipe Finder</h3>
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="navbar-items">
         <Link to="/about">
           <p>About</p>
@@ -27,14 +27,14 @@ const NavBar = () => {
 
         {isAuthenticated && <p onClick={() => logout()}>Logout</p>}
         {isAuthenticated && (
-          <span>
+          <div className="navbar-items">
             <Link to="/">
               <p>Home</p>
             </Link>
             <Link to="/profile">
               <p>Profile</p>
             </Link>
-          </span>
+          </div>
         )}
       </div>
     </header>

@@ -3,10 +3,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useAuth0 } from '../react-auth0-wrapper'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
   const { loading, user, getIdTokenClaims } = useAuth0()
-  const [recipe, setRecipe] = useState()
+  const [recipeData, setRecipeData] = useState([])
 
   const fetchFavoriteRecipes = async id => {
     const tokenStuff = await getIdTokenClaims()
@@ -18,10 +19,8 @@ const Profile = () => {
       }
     })
     console.log(resp)
-    setRecipe(resp.data)
+    setRecipeData(resp.data)
   }
-
-  // Store in database (better)
 
   useEffect(() => {
     fetchFavoriteRecipes()
@@ -38,11 +37,12 @@ const Profile = () => {
       <h2>{user.name}</h2>
       <p>{user.email}</p>
       <ul className="favorite-list">
+        <h3>Favorite Recipes:</h3>
         {recipeData.map((recipe, i) => {
           return (
             <li className="recipe-specific" key={i}>
-              <Link to={`RecipeList/${recipe.id}`}>
-                <h4 className="recipe-title">{recipe.id}</h4>
+              <Link to={`RecipeList/${recipe.recipeId}`}>
+                <p className="recipe-title">{recipe.title}</p>
               </Link>
             </li>
           )

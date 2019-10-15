@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Nunito&display=swap');
+$primary-color: #393e46;
+$secondary-color: #eeeeee;
+$header-color: #00adb5;
+
+@mixin rounded-border($radius) {
+  border-radius: $radius;
+  border-color: thick solid darken($primary-color, 20%);
+}
+
+@mixin main-type {
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.2rem;
+  color: $primary-color;
+}
+
+// :root {
+//   font: 16px / 1 sans-serif;
+// }
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: $secondary-color;
+  @include main-type();
+}
+
+.calc-macros {
+  max-width: 25rem;
+  text-align: center;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $header-color;
+}
+
+.header {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 1rem 0rem 1rem 0.5rem;
+  @include main-type();
+}
+.header-section > a {
+  text-decoration: none;
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.ingredients-macros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredients {
+  max-width: 25rem;
+}
+
+section > a > button {
+  margin: 1rem;
+}
+
+.form-button {
+  margin: 1rem 0rem 0rem 0rem;
+}
+
+.recipe-macros {
+  width: 6rem;
+  margin-top: -1rem;
+}
+
+.recipe-macros > li {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+}
+
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.recipe-specific {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 1rem 1rem 0rem 0;
+  max-width: 18rem;
+}
+
+.recipe-specific-image {
+  max-height: 8rem;
+  @include rounded-border(5px);
+}
+
+.recipe-specific > a {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 20rem;
+  justify-content: center;
+  margin-bottom: -1rem;
+  text-decoration: none;
+  @include main-type();
+}
+
+.recipe-title {
+  min-width: 10rem;
+  max-width: 18rem;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden; /* "overflow" value must be different from  visible"*/
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.navbar-items {
+  display: flex;
+  margin: 0 1rem 0rem 0rem;
+  align-items: center;
+}
+
+.navbar-items > a {
+  margin: 0.5rem;
+  text-decoration: none;
+  @include main-type();
+}
+
+.navbar-items > p {
+  margin: 0.5rem;
+  @include main-type();
+}
+
+.navbar-items :hover {
+  color: $secondary-color;
+  cursor: pointer;
+}
+
+.mod-low-high-carb-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-button {
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.macro-box {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  @include rounded-border(15px);
+}
+
+.add-to-favorites {
+  color: $header-color;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .recipe-specific > a {
+    max-width: 14rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .recipe-specific > a {
+    max-width: 12rem;
+  }
+  .recipe-specific-image {
+    max-height: 7rem;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 559px) {
+  .recipe-specific {
+    margin: 1rem 1rem 0rem 1rem;
+    align-items: initial;
+  }
+
+  .recipe-specific > a {
+    max-width: 8rem;
+    margin-bottom: -0.5rem;
+  }
+  .recipe-specific-image {
+    max-height: 5rem;
+  }
+
+  .recipe-title {
+    font-size: 10px;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .recipe-macros {
+    font-size: 10px;
+  }
+
+  .recipe-macros > li {
+    height: 1rem;
+  }
+
+  .add-to-favorites {
+    font-size: 10px;
+  }
+}

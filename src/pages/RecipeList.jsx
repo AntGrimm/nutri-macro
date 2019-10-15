@@ -28,18 +28,18 @@ const RecipeList = props => {
       resp.data[j] = firstArray
     }
     console.log(resp.data)
-    setRecipeData(resp.data)
+    setRecipeData(resp.data.filter((_, i) => i < 6))
   }
 
-  const AddFavoriteRecipe = async id => {
+  const AddFavoriteRecipe = async recipeData => {
     const tokenStuff = await getIdTokenClaims()
     const token = tokenStuff.__raw
     console.log(token)
     const resp = await axios.post(
       `https://localhost:5001/api/recipe`,
       {
-        recipeId: id,
-        recipeTitle: id.title
+        recipeId: recipeData.id,
+        title: recipeData.title
       },
       {
         headers: {
@@ -47,9 +47,6 @@ const RecipeList = props => {
         }
       }
     )
-    if (resp.status === 200) {
-      console.log('Sent')
-    }
     console.log(resp)
   }
 
@@ -77,7 +74,7 @@ const RecipeList = props => {
                   <p
                     className="add-to-favorites"
                     onClick={() => {
-                      AddFavoriteRecipe(recipe.id)
+                      AddFavoriteRecipe(recipe)
                     }}
                   >
                     Add to favorites
