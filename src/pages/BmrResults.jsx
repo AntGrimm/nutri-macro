@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PieChart from '../images/bmr-and-tdee.png'
 
 const BmrResults = props => {
   const bmr = parseFloat(
@@ -52,20 +53,11 @@ const BmrResults = props => {
   return (
     <>
       <section className="mod-low-high-carb-section">
-        <h3>How TEE Is Calculated</h3>
-        <p>
-          Your daily Total Energy Expenditure (TEE) is an estimation of how many
-          calories you burn per day when exercise is taken into account. It is
-          calculated by first figuring out your Basal Metabolic Rate, then
-          multiplying that value by an activity multiplier.
-        </p>
-        <img src="" alt="TEE Pie Chart"></img>
-        <p>
-          Since your BMR represents how many calories your body burns when at
-          rest, it is necessary to adjust the numbers upwards to account for the
-          calories you burn during the day. This is true even for those with a
-          sedentary lifestyle. Our TEE calculator uses the best formulas and
-          displays your score in a way that's easy to read and meaningful.
+        <p className="bmr-results-explanation">
+          Based on your stats, the best estimate for your maintenance calories
+          is <strong>{calories}</strong> calories per day based on the
+          Mifflin-St Jeor Formula, which is widely known to be the most
+          accurate.
         </p>
         <div className="macro-box">
           <h4>Basal Metabolic Rate</h4>
@@ -86,6 +78,21 @@ const BmrResults = props => {
         >
           <button>Get Meals</button>
         </Link>
+        <h3 className="bmr-results-explanation">How TEE Is Calculated</h3>
+        <p className="bmr-results-explanation">
+          Your daily Total Energy Expenditure (TEE) is an estimation of how many
+          calories you burn per day when exercise is taken into account. It is
+          calculated by first figuring out your Basal Metabolic Rate, then
+          multiplying that value by an activity multiplier.
+        </p>
+        {/* <img src={PieChart} alt="TEE Pie Chart"></img> */}
+        <p className="bmr-results-explanation">
+          Since your BMR represents how many calories your body burns when at
+          rest, it is necessary to adjust the numbers upwards to account for the
+          calories you burn during the day. This is true even for those with a
+          sedentary lifestyle. Our TEE calculator uses the best formulas and
+          displays your score in a way that's easy to read and meaningful.
+        </p>
       </section>
     </>
   )

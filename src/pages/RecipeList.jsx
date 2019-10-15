@@ -36,7 +36,7 @@ const RecipeList = props => {
     const token = tokenStuff.__raw
     console.log(token)
     const resp = await axios.post(
-      `https://localhost:5001/api/recipe`,
+      `https://tdee-recipe-finder.herokuapp.com/api/recipe`,
       {
         recipeId: recipeData.id,
         title: recipeData.title

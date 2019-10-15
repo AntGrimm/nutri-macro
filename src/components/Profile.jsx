@@ -13,11 +13,14 @@ const Profile = () => {
     const tokenStuff = await getIdTokenClaims()
     const token = tokenStuff.__raw
     console.log(token)
-    const resp = await axios.get(`https://localhost:5001/api/recipe`, {
-      headers: {
-        Authorization: 'Bearer ' + token
+    const resp = await axios.get(
+      `https://tdee-recipe-finder.herokuapp.com/api/recipe`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
       }
-    })
+    )
     console.log(resp)
     setRecipeData(resp.data)
   }

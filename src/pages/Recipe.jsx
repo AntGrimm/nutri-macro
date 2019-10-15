@@ -31,7 +31,7 @@ const Recipe = props => {
   return (
     <>
       <main className="main-area">
-        <h1>{recipe.title}</h1>
+        <h2>{recipe.title}</h2>
         <p>Cook time: {recipe.readyInMinutes} minutes</p>
         <section>
           {/* <ul className="recipe">
