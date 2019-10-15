@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const Recipe = props => {
-  const [recipe, setRecipe] = useState()
+  const [recipe, setRecipe] = useState({})
   const [instructions, setInstructions] = useState([])
   const recipeSearch = props.match.params.recipe
 
@@ -12,8 +12,8 @@ const Recipe = props => {
     )
     console.log(resp.data)
     // console.log(resp.data.analyzedInstructions[0].steps)
-    // setRecipe(resp.data)
-    // setInstructions(resp.data.analyzedInstructions[0].steps)
+    setRecipe(resp.data)
+    setInstructions(resp.data.analyzedInstructions[0].steps)
   }
 
   const fetchRecipeInstructions = async () => {
@@ -32,7 +32,7 @@ const Recipe = props => {
   return (
     <>
       <main className="main-area">
-        {/* <p>Cook time: {recipe.readyInMinutes}</p> */}
+        <p>Cook time: {recipe.readyInMinutes} minutes</p>
         <section>
           <ul className="recipe">
             {instructions.map((item, j) => {

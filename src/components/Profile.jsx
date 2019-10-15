@@ -1,27 +1,33 @@
 // src/components/Profile.js
 
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useAuth0 } from '../react-auth0-wrapper'
 import axios from 'axios'
 
-const fetchFavoriteRecipes = async id => {
-  const tokenStuff = await getIdTokenClaims()
-  const token = tokenStuff.__raw
-  console.log(token)
-  const resp = await axios.get(`https://localhost:5001/api/recipe`, {
-    headers: {
-      Authorization: 'Bearer ' + token
-    }
-  })
-  console.log(resp)
-}
-
-useEffect(() => {
-  fetchFavoriteRecipes()
-}, [])
-
 const Profile = () => {
-  const { loading, user } = useAuth0()
+  const { loading, user, getIdTokenClaims } = useAuth0()
+  const [recipe, setRecipe] = useState()
+
+  const fetchFavoriteRecipes = async id => {
+    const tokenStuff = await getIdTokenClaims()
+    const token = tokenStuff.__raw
+    console.log(token)
+    const resp = await axios.get(`https://localhost:5001/api/recipe`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
+    console.log(resp)
+    setRecipe(resp.data)
+  }
+
+  // Store in database (better)
+
+  // API that takes all IDs (best)
+
+  useEffect(() => {
+    fetchFavoriteRecipes()
+  }, [])
 
   if (loading || !user) {
     return <div>Loading...</div>

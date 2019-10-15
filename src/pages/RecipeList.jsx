@@ -5,7 +5,7 @@ import { useAuth0 } from '../react-auth0-wrapper'
 
 const RecipeList = props => {
   const [recipeData, setRecipeData] = useState([])
-  const [randomRecipes, setRandomRecipes] = useState(0)
+  // const [randomRecipe, setRandomRecipe] = useState(0)
   const { getIdTokenClaims } = useAuth0()
 
   const maxCarbs = props.location.state.carbs / 3
@@ -23,7 +23,8 @@ const RecipeList = props => {
     )
     console.log(resp.data)
     setRecipeData(resp.data)
-    setRandomRecipes(Math.floor(Math.random() * resp.data.length))
+    // setRandomRecipe(Math.floor(Math.random() * resp.data.length))
+    // javascript randomize array
   }
 
   const AddFavoriteRecipe = async id => {
@@ -56,9 +57,27 @@ const RecipeList = props => {
     <>
       <main className="main-area">
         <section>
-          <h2 className="random-recipe">
-            {/* Meal of the Day: {recipeData[randomRecipes].title} */}
-          </h2>
+          {/* {recipeData.length > 1 && (
+            <ul className="random-recipe">
+              <Link to={`RecipeList/${recipeData[randomRecipe].id}`}>
+                <li>Meal 1: {recipeData[randomRecipe].title}</li>
+                <li>
+                  <img
+                    src={recipeData[randomRecipe].image}
+                    alt={recipeData[randomRecipe].title}
+                  ></img>
+                </li>
+              </Link>
+              <p
+                className="add-to-favorites"
+                onClick={() => {
+                  AddFavoriteRecipe(recipeData[randomRecipe].id)
+                }}
+              >
+                Add to favorites
+              </p>
+            </ul>
+          )} */}
           <ul className="recipe-list">
             {recipeData.map((recipe, i) => {
               return (

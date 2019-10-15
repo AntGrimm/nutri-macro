@@ -8,7 +8,7 @@ const NavBar = () => {
     <header className="header-section">
       <div>
         <Link to="/">
-          <h3 className="header">TDEE Recipe Finder</h3>
+          <h3 className="header">Total Energy Expenditure Recipe Finder</h3>
         </Link>
       </div>
       <div className="navbar-items">

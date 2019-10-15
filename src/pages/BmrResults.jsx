@@ -44,9 +44,9 @@ const BmrResults = props => {
   const bmrAndActivity = parseFloat(
     Math.round(bmr * props.location.state.activity)
   )
-  const protein = parseFloat(Math.round((bmrAndActivity * 0.3) / 4))
-  const fat = parseFloat(Math.round((bmrAndActivity * 0.35) / 9))
-  const carbs = parseFloat(Math.round((bmrAndActivity * 0.35) / 4))
+  const protein = parseFloat(Math.round((bmrAndActivity * 0.2) / 4))
+  const fat = parseFloat(Math.round((bmrAndActivity * 0.3) / 9))
+  const carbs = parseFloat(Math.round((bmrAndActivity * 0.5) / 4))
   const calories = bmrAndActivity
 
   return (
@@ -58,7 +58,7 @@ const BmrResults = props => {
           <p>Your BMR with activity is {calories}</p>
         </div>
         <div className="macro-box">
-          <h4>Moderate Carb (30/35/35)</h4>
+          <h4>Moderate Carb (20/30/50)</h4>
           <p>Protein {protein}g</p>
           <p>Fats {fat}g</p>
           <p>Carbs {carbs}g</p>
