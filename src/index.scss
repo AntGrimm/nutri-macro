@@ -51,6 +51,7 @@ body {
 }
 .header-section > a {
   text-decoration: none;
+  max-width: 14rem;
 }
 
 .main-area {
@@ -168,6 +169,10 @@ section > a > button {
 
 .radio-button {
   margin: 0 0.5rem 0 0.5rem;
+}
+
+.spoonacular-ingredients-menu {
+  visibility: hidden;
 }
 
 .macro-box {

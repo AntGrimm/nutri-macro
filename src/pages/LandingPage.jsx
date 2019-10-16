@@ -29,7 +29,7 @@ const LandingPage = () => {
     <>
       <main className="main-area">
         <header>
-          <h1>Learn How Many Calories You Burn Every Day</h1>
+          <h2>Learn How Many Calories You Burn Every Day</h2>
           <p>
             Use the TEE calculator to learn your daily Total Energy Expenditure,
             a measure of how many calories you burn per day. This calculator
@@ -70,6 +70,7 @@ const LandingPage = () => {
             <p>Age</p>
             <input
               type="number"
+              pattern="\d*"
               placeholder="Age"
               onChange={e => {
                 setAge(e.target.value)
@@ -80,6 +81,7 @@ const LandingPage = () => {
             <p>Weight</p>
             <input
               type="number"
+              pattern="\d*"
               placeholder="lbs"
               onChange={e => {
                 setWeight(e.target.value)

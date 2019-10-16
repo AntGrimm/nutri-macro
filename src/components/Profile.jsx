@@ -25,6 +25,8 @@ const Profile = () => {
     setRecipeData(resp.data)
   }
 
+  // axios.get(`https://api.spoonacular.com/recipes/informationBulk?apiKey=55d5937ac1794abf9708407d5a08fe7b&ids=715538,716429,${id}`)
+
   useEffect(() => {
     fetchFavoriteRecipes()
   }, [])
